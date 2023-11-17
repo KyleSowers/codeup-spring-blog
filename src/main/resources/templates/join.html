@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+</head>
+<body>
+<nav th:replace="partials/navbar :: navbar"></nav>
+
+    <div th:if="${cohort.length() > 16}">
+      <h1 th:text="${cohort}"></h1>
+    </div>
+
+      <div th:each="item : ${shoppingCart}">
+          <p th:text="${item}"></p>
+      </div>
+
+
+
+  <form action="/join" method="POST">
+      <label for="cohort">Enter your cohort:</label>
+    <input type="text" name="cohort" id="cohort"/>
+    <button type="submit">Join Now!</button>
+  </form>
+
+</body>
+</html>
