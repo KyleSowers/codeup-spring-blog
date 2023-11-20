@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>All posts</h1>
+
+    <div id="container">
+        <ul>
+            <li th:each="post : ${posts}">
+                <h1 th:text="${post.title}"></h1>
+                <p th:text="${post.body}"></p>
+                <a th:href="@{/posts/{id}(id=${post.getId()})}">View</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
