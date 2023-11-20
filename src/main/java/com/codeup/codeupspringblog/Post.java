@@ -1,16 +1,22 @@
 package com.codeup.codeupspringblog;
 
+import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-
+@Entity
+@Table(name = "posts")
 public class Post {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
+    @Column(nullable = false, length = 150)
     private String title;
 
+    @Column(length = 750)
     private String body;
 
     public Post(){
@@ -18,6 +24,11 @@ public class Post {
 
     public Post(long id, String title, String body) {
        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }

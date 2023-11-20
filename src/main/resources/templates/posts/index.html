@@ -9,7 +9,7 @@
 
     <div id="container">
         <ul>
-            <li th:each="post : ${posts}">
+            <li th:each="post : ${postsList}">
                 <h1 th:text="${post.title}"></h1>
                 <p th:text="${post.body}"></p>
                 <a th:href="@{/posts/{id}(id=${post.getId()})}">View</a>

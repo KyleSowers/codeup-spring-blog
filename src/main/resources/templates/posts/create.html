@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 550px;
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: .2em;
+            margin: .5em;
+            gap: 5px;
+        }
+
+        textarea {
+            height: 450px;
+        }
+
+        button {
+            height: 20px;
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+  <form action="/post/create" method="POST">
+      <label for="postTitle">Post Title:</label>
+      <input type="text" id="postTitle" name="title"/>
+      <label for="postBody">Body Description:</label>
+      <textarea typeof="text" id="postBody" name="body"></textarea>
+      <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>
