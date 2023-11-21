@@ -2,6 +2,8 @@ package com.codeup.codeupspringblog.jpa_lectures.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User {
 
@@ -22,6 +24,9 @@ public class User {
 
     @Column(nullable = false, length = 50)
     private String user_password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
 
     //CONSTRUCTORS

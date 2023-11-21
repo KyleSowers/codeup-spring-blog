@@ -10,6 +10,9 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //FIELDS
+    ///
+    ////
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -18,6 +21,10 @@ public class Post {
 
     @Column(length = 750)
     private String body;
+
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
 
 
     //CONSTRUCTORS
