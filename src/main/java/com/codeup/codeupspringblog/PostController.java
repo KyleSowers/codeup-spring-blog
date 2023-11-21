@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog;
 
 import com.codeup.codeupspringblog.jpa_lectures.model.Post;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.PostRepository;
+import com.codeup.codeupspringblog.jpa_lectures.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +13,14 @@ public class PostController {
     //DEPENDENCY INJECTOR
     ///
     ////
+    private final UserRepository userDataAccessObject;
+
     private final PostRepository postDataAccessObject;
 
-    public PostController(PostRepository postDataAccessObject) {
+    //INJECTION CONSTRUCTOR
+    public PostController(PostRepository postDataAccessObject, UserRepository userDataAccessObject) {
         this.postDataAccessObject = postDataAccessObject;
+        this.userDataAccessObject = userDataAccessObject;
     }
     //END OF DEPENDENCY INJECTOR
 
