@@ -1,6 +1,7 @@
 package com.codeup.codeupspringblog;
 
 import com.codeup.codeupspringblog.jpa_lectures.model.Post;
+import com.codeup.codeupspringblog.jpa_lectures.model.User;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.PostRepository;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -59,7 +60,9 @@ public class PostController {
     @RequestMapping(path = "/post/create", method = RequestMethod.POST)
     public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, Model model) {
 
-    Post post = new Post(title, body);
+        User user = userDataAccessObject.getUserById(1L);
+        Post post = new Post(title, body);
+        post.setUser(user);
 
         postDataAccessObject.save(post);
 

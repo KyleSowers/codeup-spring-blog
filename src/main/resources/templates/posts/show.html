@@ -7,8 +7,8 @@
 <body>
     <label th:number="${post.id}"></label>
     <h1 th:text="${post.title}"></h1>
-
     <p th:text="${post.body}"></p>
+    <p>Posted by: <span th:text="${post.getUser().getUser_email()}"></span> </p>
 
 
 </body>
