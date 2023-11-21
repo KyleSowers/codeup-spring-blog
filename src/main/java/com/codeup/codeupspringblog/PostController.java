@@ -1,19 +1,24 @@
 package com.codeup.codeupspringblog;
 
+import com.codeup.codeupspringblog.jpa_lectures.model.Post;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 public class PostController {
 
+    //DEPENDENCY INJECTOR
+    ///
+    ////
     private final PostRepository postDataAccessObject;
 
-    public PostController(PostRepository postDataAccessObject) { this.postDataAccessObject = postDataAccessObject; }
+    public PostController(PostRepository postDataAccessObject) {
+        this.postDataAccessObject = postDataAccessObject;
+    }
+    //END OF DEPENDENCY INJECTOR
+
 
 //    @RequestMapping(path = "/post", method = RequestMethod.GET)
 //    @ResponseBody

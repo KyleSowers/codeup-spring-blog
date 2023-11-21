@@ -1,4 +1,4 @@
-package com.codeup.codeupspringblog;
+package com.codeup.codeupspringblog.jpa_lectures.model;
 
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +19,10 @@ public class Post {
     @Column(length = 750)
     private String body;
 
+
+    //CONSTRUCTORS
+    ///
+    ////
     public Post(){
     }
 
@@ -32,6 +36,11 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
+
+    //GETTERS/SETTERS
+    ///
+    ////
 
     public long getId() {
         return id;
