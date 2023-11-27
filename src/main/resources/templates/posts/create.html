@@ -38,11 +38,20 @@
 </head>
 <body>
 
-  <form action="/post/create" method="POST">
-      <label for="postTitle">Post Title:</label>
-      <input type="text" id="postTitle" name="title"/>
-      <label for="postBody">Body Description:</label>
-      <textarea typeof="text" id="postBody" name="body"></textarea>
+<!--  <form action="/post/create" method="POST">-->
+<!--      <label for="postTitle">Post Title:</label>-->
+<!--      <input type="text" id="postTitle" name="title"/>-->
+<!--      <label for="postBody">Body Description:</label>-->
+<!--      <textarea typeof="text" id="postBody" name="body"></textarea>-->
+<!--      <button type="submit">Submit</button>-->
+<!--  </form>-->
+
+  <form th:action="@{/post/create}" th:method="POST" th:object="${post}">
+      Post Title:
+      <input th:field="*{title}" />
+      <br />
+      Body Description:
+      <textarea th:field="*{body}"></textarea>
       <button type="submit">Submit</button>
   </form>
 
