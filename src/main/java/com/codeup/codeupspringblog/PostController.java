@@ -53,19 +53,41 @@ public class PostController {
 
     @RequestMapping(path = "/post/create", method = RequestMethod.GET)
 
-    public String viewCreatePost() {
-        return "posts/create";
+//    public String viewCreatePost() {
+//        return "posts/create";
+
+    public String viewCreatePost(Model model) {
+            model.addAttribute("post", new Post());
+            return "posts/create";
     }
 
     @RequestMapping(path = "/post/create", method = RequestMethod.POST)
-    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, Model model) {
+//    public String createPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body, Model model) {
+//
+//        User user = userDataAccessObject.getUserById(1L);
+//        Post post = new Post(title, body);
+//        post.setUser(user);
+//
+//        postDataAccessObject.save(post);
+//
+//        return "redirect:/post";
 
-        User user = userDataAccessObject.getUserById(1L);
-        Post post = new Post(title, body);
-        post.setUser(user);
-
+    public String createPost(@ModelAttribute Post post) {
         postDataAccessObject.save(post);
+        return "redirect:/post";
+    }
 
+    @RequestMapping(path = "/post/{id}/edit", method = RequestMethod.GET)
+    public String getEditPost(@PathVariable int id, Model model) {
+        Post post = postDataAccessObject.getPostById(id);
+        model.addAttribute("post", post);
+
+        return "posts/edit";
+    }
+
+    @RequestMapping(path = "/post/{id}/edit", method = RequestMethod.POST)
+    public String editPost(@ModelAttribute Post post) {
+        postDataAccessObject.save(post);
         return "redirect:/post";
     }
 

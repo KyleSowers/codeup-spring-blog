@@ -33,7 +33,7 @@
             <li th:each="post : ${postsList}">
                 <h1 th:text="${post.title}"></h1>
                 <p th:text="${post.body}"></p>
-                <a th:href="@{/posts/{id}(id=${post.getId()})}">View</a>
+                <a th:href="@{/post/{id}(id = ${post.id})}">View</a>
             </li>
         </ul>
     </div>
