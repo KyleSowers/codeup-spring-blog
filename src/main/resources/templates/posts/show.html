@@ -5,7 +5,18 @@
     <title>Show</title>
 </head>
 <body>
-    <label th:number="${post.id}"></label>
+    <nav>
+        <ul>
+            <!-- More links here... -->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+<label th:number="${post.id}"></label>
     <h1 th:text="${post.title}"></h1>
     <p th:text="${post.body}"></p>
     <p>Posted by: <span th:text="${post.getUser().getUser_email()}"></span> </p>

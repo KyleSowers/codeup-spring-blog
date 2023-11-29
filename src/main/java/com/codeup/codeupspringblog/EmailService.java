@@ -1,3 +1,5 @@
+package com.codeup.codeupspringblog;
+
 import com.codeup.codeupspringblog.jpa_lectures.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

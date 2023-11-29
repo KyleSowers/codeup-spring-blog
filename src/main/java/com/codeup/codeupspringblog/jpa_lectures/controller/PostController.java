@@ -1,5 +1,6 @@
-package com.codeup.codeupspringblog;
+package com.codeup.codeupspringblog.jpa_lectures.controller;
 
+import com.codeup.codeupspringblog.EmailService;
 import com.codeup.codeupspringblog.jpa_lectures.model.Post;
 import com.codeup.codeupspringblog.jpa_lectures.model.User;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.PostRepository;
@@ -7,6 +8,7 @@ import com.codeup.codeupspringblog.jpa_lectures.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 public class PostController {
@@ -18,10 +20,13 @@ public class PostController {
 
     private final PostRepository postDataAccessObject;
 
+    private EmailService emailService;
+
     //INJECTION CONSTRUCTOR
-    public PostController(PostRepository postDataAccessObject, UserRepository userDataAccessObject) {
+    public PostController(PostRepository postDataAccessObject, UserRepository userDataAccessObject, EmailService emailService) {
         this.postDataAccessObject = postDataAccessObject;
         this.userDataAccessObject = userDataAccessObject;
+        this.emailService = emailService;
     }
     //END OF DEPENDENCY INJECTOR
 
@@ -73,7 +78,12 @@ public class PostController {
 //        return "redirect:/post";
 
     public String createPost(@ModelAttribute Post post) {
+        User user = userDataAccessObject.getUserById(1L);
+        post.setUser(user);
         postDataAccessObject.save(post);
+
+        emailService.prepareAndSend(post, "Post Created", "Hello, your post has been created!");
+
         return "redirect:/post";
     }
 

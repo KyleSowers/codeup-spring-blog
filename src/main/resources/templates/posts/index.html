@@ -26,6 +26,17 @@
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <!-- More links here... -->
+            <li>
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
     <h1>All posts</h1>
 
     <div id="container">
