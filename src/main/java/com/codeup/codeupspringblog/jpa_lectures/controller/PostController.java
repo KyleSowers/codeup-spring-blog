@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.jpa_lectures.model.Post;
 import com.codeup.codeupspringblog.jpa_lectures.model.User;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.PostRepository;
 import com.codeup.codeupspringblog.jpa_lectures.repositories.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -78,7 +79,10 @@ public class PostController {
 //        return "redirect:/post";
 
     public String createPost(@ModelAttribute Post post) {
-        User user = userDataAccessObject.getUserById(1L);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
+        User user = userDataAccessObject.getReferenceById(loggedInUser.getId());
         post.setUser(user);
         postDataAccessObject.save(post);
 

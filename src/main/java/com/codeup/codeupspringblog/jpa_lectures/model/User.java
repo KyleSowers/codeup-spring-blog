@@ -17,13 +17,13 @@ public class User {
     private Long id;
 
     @Column(nullable = false, length = 30)
-    private String user_name;
+    private String username;
 
     @Column(unique = true)
     private String user_email;
 
-    @Column(nullable = false, length = 50)
-    private String user_password;
+    @Column(nullable = false)
+    private String password;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -40,37 +40,37 @@ public class User {
     public User(User copy){
         id = copy.id;
         user_email = copy.user_email;
-        user_name = copy.user_name;
-        user_password = copy.user_password;
+        username = copy.username;
+        password = copy.password;
     }
 
 
     public User(Long id, String user_name, String user_email, String user_password, List<Post> posts) {
         this.id = id;
-        this.user_name = user_name;
+        this.username = user_name;
         this.user_email = user_email;
-        this.user_password = user_password;
+        this.password = user_password;
         this.posts = posts;
     }
 
     public User(String user_name, String user_email, String user_password, List<Post> posts) {
-        this.user_name = user_name;
+        this.username = user_name;
         this.user_email = user_email;
-        this.user_password = user_password;
+        this.password = user_password;
         this.posts = posts;
     }
 
     public User(Long id, String user_name, String user_email, String user_password) {
         this.id = id;
-        this.user_name = user_name;
+        this.username = user_name;
         this.user_email = user_email;
-        this.user_password = user_password;
+        this.password = user_password;
     }
 
     public User(String user_name, String user_email, String user_password) {
-        this.user_name = user_name;
+        this.username = user_name;
         this.user_email = user_email;
-        this.user_password = user_password;
+        this.password = user_password;
     }
 
     //GETTERS/SETTERS
@@ -84,12 +84,12 @@ public class User {
         return id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUser_email() {
@@ -100,12 +100,12 @@ public class User {
         this.user_email = user_email;
     }
 
-    public String getUser_password() {
-        return user_password;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Post> getPosts() {
@@ -116,6 +116,4 @@ public class User {
         this.posts = posts;
     }
 
-    public void setPassword(String hash) {
-    }
 }
